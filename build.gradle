@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Use JUnit Jupiter API for testing
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+
+    // Selenide for UI tests (built on Selenium)
+    testImplementation 'com.codeborne:selenide:6.17.2'
+
+    // Rest‑Assured for API tests
+    testImplementation 'io.rest‑assured:rest‑assured:5.3.2'
+
+    // Hibernate ORM for database interaction
+    implementation 'org.hibernate.orm:hibernate-core:6.2.5.Final'
+
+    // In‑memory H2 database for tests
+    implementation 'com.h2database:h2:2.2.224'
+
+    // Javalin lightweight web framework for the simple API server
+    implementation 'io.javalin:javalin:5.6.1'
+
+    // Gson for JSON serialization/deserialization in the API server
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    // Allure adapters for test reporting
+    testImplementation 'io.qameta.allure:allure-junit5:2.23.0'
+    testImplementation 'io.qameta.allure:allure-rest-assured:2.23.0'
+    testImplementation 'io.qameta.allure:allure-selenide:2.23.0'
+
+    // Optionally, WebDriverManager to auto‑manage browsers for Selenide
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.3.2'
+}
+
+test {
+    useJUnitPlatform()
+    // Run browser in headless mode for UI tests to work in CI
+    systemProperty 'java.awt.headless', 'true'
+}
+
+// Configure Allure reporting
+allure {
+    version = '2.23.0'
+    useJUnit5 {
+        version = '2.23.0'
+    }
+}

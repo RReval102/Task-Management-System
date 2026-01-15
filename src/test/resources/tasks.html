@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Management System</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; }
+        form { margin-bottom: 1rem; }
+        input { margin-right: 0.5rem; }
+        ul { list-style-type: none; padding-left: 0; }
+        li { background: #f2f2f2; margin-bottom: 0.5rem; padding: 0.5rem; border-radius: 4px; }
+    </style>
+</head>
+<body>
+<h1 id="title">Task Management System</h1>
+<form id="task-form">
+    <input type="text" id="task-title" placeholder="Title" />
+    <input type="text" id="task-desc" placeholder="Description" />
+    <button type="button" id="add-task">Add</button>
+</form>
+<ul id="task-list"></ul>
+
+<script>
+    const list = document.getElementById('task-list');
+    document.getElementById('add-task').addEventListener('click', () => {
+        const title = document.getElementById('task-title').value;
+        const desc = document.getElementById('task-desc').value;
+        if (!title) return;
+        const item = document.createElement('li');
+        item.textContent = `${title} - ${desc}`;
+        list.appendChild(item);
+        // reset inputs
+        document.getElementById('task-title').value = '';
+        document.getElementById('task-desc').value = '';
+    });
+</script>
+</body>
+</html>
